@@ -1,0 +1,23 @@
+<!-- core/templates/snippets/menu_principal.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">AgroConnect</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registrar_nacimiento' %}">Registrar Nacimiento</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registrar_muerte' %}">Registrar Muerte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registrar_enfermedad' %}">Registrar Enfermedad</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registrar_lote_cubricion' %}">Registrar Lote de Cubrición</a>
+        </li>
+      </ul>
+    </div>
+  </nav>  
