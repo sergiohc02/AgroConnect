@@ -1,57 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Nacimiento</title>
-    <!-- Asumiendo que existe un archivo CSS principal para el menú y diseño general -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script>
-        function verificarRol() {
-            var rol = document.querySelector('input[name="rol"]:checked').value;
-            if (rol === 'Granjero') {
-                document.getElementById('formulario-nacimiento').style.display = 'block';
-            } else {
-                alert('Acceso Restringido');
-            }
-        }
-    </script>
-</head>
-<body>
-    <header>
-        <!-- Asumiendo que hay un snippet para el menú que se incluye en todas las páginas -->
-        {% include 'menu_principal.html' %}
-    </header>
+{% extends 'base.html' %}
+
+{% block title %}Registro de Nacimiento{% endblock %}
+
+{% block content %}
+    <h1>Registro de Nacimiento</h1>
+    <p>¿Cuál es tu rol?</p>
+    <label><input type="radio" name="rol" value="Granjero" onchange="verificarRol()"> Granjero</label>
+    <label><input type="radio" name="rol" value="Veterinario" onchange="verificarRol()"> Veterinario</label>
     
-    <main>
-        <h1>Registro de Nacimiento</h1>
-        <p>¿Cuál es tu rol?</p>
-        <label><input type="radio" name="rol" value="Granjero" onchange="verificarRol()"> Granjero</label>
-        <label><input type="radio" name="rol" value="Veterinario" onchange="verificarRol()"> Veterinario</label>
-        
-        <form id="formulario-nacimiento" action="{% url 'ruta_para_guardar_nacimientos' %}" method="post" style="display: none;">
-            {% csrf_token %}
-            <label for="id_animal">ID del animal:</label>
-            <input type="text" id="id_animal" name="id_animal" required><br>
-
-            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br>
-
-            <label for="peso">Peso al nacer:</label>
-            <input type="number" id="peso" name="peso" step="0.01" required><br>
-
-            <label for="raza">Raza:</label>
-            <input type="text" id="raza" name="raza" required><br>
-
-            <!-- Otros campos necesarios para el formulario -->
-
-            <input type="submit" value="Registrar">
-        </form>
-    </main>
-    
-    <footer>
-        <!-- Asumiendo que hay un snippet para el pie de página que se incluye en todas las páginas -->
-        {% include 'pie_pagina.html' %}
-    </footer>
-</body>
-</html>
+    <form id="formulario-nacimiento" action="{% url 'registrar_nacimiento' %}" method="post" style="display: none;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Registrar">
+    </form>
+{% endblock %}

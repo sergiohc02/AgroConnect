@@ -1,20 +1,38 @@
-<!-- core/templates/base_generic.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Aquí van tus etiquetas head comunes -->
-  <title>{% block title %}AgroConnect{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Sitio{% endblock %}</title>
+    
+    {% load static %}
+
+    <!-- Enlaza al archivo CSS principal -->
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script>
+        function verificarRol() {
+            var rol = document.querySelector('input[name="rol"]:checked').value;
+            if (rol === 'Granjero') {
+                document.getElementById('formulario-nacimiento').style.display = 'block';
+            } else {
+                alert('Acceso Restringido');
+            }
+        }
+    </script>
 </head>
 <body>
-
-  <!-- Incluye el menú principal -->
-  {% include 'snippets/menu_principal.html' %}
-
-  <!-- Contenido específico de cada página -->
-  <div class="container">
-    {% block content %}
-    {% endblock %}
-  </div>
-
+    <header>
+        {% include 'snippets/menu_principal.html' %}
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <!-- Asumiendo que hay un snippet para el pie de página que se incluye en todas las páginas -->
+        {% include 'snippets/pie_pagina.html' %}
+    </footer>
 </body>
 </html>

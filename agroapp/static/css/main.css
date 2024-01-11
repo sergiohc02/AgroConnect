@@ -1,0 +1,19 @@
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Color de fondo general */
+    color: #343a40; /* Color del texto */
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #007bff; /* Color de fondo del encabezado */
+    padding: 10px;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #007bff; /* Color de fondo del pie de página */
+    padding: 10px;
+    color: #ffffff; /* Color del texto del pie de página */
+}
